@@ -21,8 +21,11 @@
 
   <ItemGroup>
     <Folder Include="Abstract\" />
-    <Folder Include="Concrete\Repository\" />
     <Folder Include="Context\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Entity\Entities.csproj" />
   </ItemGroup>
 
 </Project>
