@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Core.Entites;
 
 namespace Entity.Concrete
 {
-    public class About
+    public class About: IEntity
     {
         public int AboutId { get; set; }
         public string FirstDetails { get; set; }
