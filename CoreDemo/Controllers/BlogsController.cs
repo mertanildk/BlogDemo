@@ -14,7 +14,13 @@ namespace MvcUI.Controllers
 
         public IActionResult Index()
         {
-            return View(_blogService.GetAll()) ;
+            return View(_blogService.IncludeCategory()) ;
+        }
+
+        public IActionResult BlogDetails(int id)
+        {
+            var blog = _blogService.GetById(id);
+            return View(blog);
         }
     }
 }

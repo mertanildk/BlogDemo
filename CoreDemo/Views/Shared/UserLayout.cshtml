@@ -43,7 +43,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<i class="fab fa-linode"></i> Weblog</a>
 				</div>
 
-				@await Html.PartialAsync("SignInRegister")
+				<partial name="SignInRegister"></partial>
 
 				<div class="col-md-4 log-icons text-right">
 
@@ -76,31 +76,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 		</div>
 
-		@await Html.PartialAsync("Header")
+		<partial name="Header"></partial>
 	</header>
-	<!--//header-->
-	<!--/banner-->
-	<div class="banner-inner">
-	</div>
-	<ol class="breadcrumb">
-		<li class="breadcrumb-item">
-			<a href="index.html">Home</a>
-		</li>
-		<li class="breadcrumb-item active">Blog3</li>
-	</ol>
-	<!--//banner-->
 
-	<!--/main-->
 	@RenderBody()
-	<!--//main-->
-	<!--footer-->
-	@await Html.PartialAsync("Footer")
-	<!---->
 
-	<!-- js -->
+	<partial name="Footer"></partial>
+
 	<script src="~/CoreBlogTema/web/js/jquery-2.2.3.min.js"></script>
-	<!-- //js -->
-	<!--/ start-smoth-scrolling -->
 	<script src="~/CoreBlogTema/web/js/move-top.js"></script>
 	<script src="~/CoreBlogTema/web/js/easing.js"></script>
 	<script>

@@ -35,7 +35,12 @@ namespace Business.Concrete
 
         public Blog GetById(int id)
         {
-            throw new NotImplementedException();
+            return _blogDal.Get(x=>x.BlogId==id);
+        }
+
+        public List<Blog> IncludeCategory()
+        {
+            return _blogDal.IncludeCategory();
         }
 
         public void Update(Blog blog)
