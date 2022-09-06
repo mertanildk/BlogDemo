@@ -10,6 +10,9 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddSingleton<ICategoryService, CategoryManager>();
 builder.Services.AddSingleton<ICategoryDal, EfCategoryDal>();
 builder.Services.AddSingleton<IAboutDal, EfAboutDal>();
+builder.Services.AddSingleton<IBlogDal, EfBlogDal>();
+builder.Services.AddSingleton<IBlogService, BlogManager>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
