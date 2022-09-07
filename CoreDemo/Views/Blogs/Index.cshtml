@@ -15,7 +15,7 @@
                     @foreach (var blog in Model)
                     {
                         <div class="col-lg-4 card">
-                            <a href="single.html">
+                            <a asp-action="BlogDetails" asp-route-id="@blog.BlogId" asp-controller="Blogs" >
                                 <img src="@blog.Image" class="card-img-top img-fluid" alt="">
                             </a>
                             <div class="card-body">
@@ -37,7 +37,7 @@
                                     </li>
                                 </ul>
                                 <h5 class="card-title">
-                                    <a href="single.html">@blog.Title</a>
+                                    <a asp-action="BlogDetails" asp-route-id="@blog.BlogId" asp-controller="Blogs" >@blog.Title</a>
                                 </h5>
                                 <p class="card-text mb-3">@blog.Content.Substring(0,blog.Content.Substring(0,10).LastIndexOf(" "))... </p>
                                 @*0.130 a kadar git karşılaştığın son boşluğun indexini döndür dedik.*@
