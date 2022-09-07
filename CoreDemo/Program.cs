@@ -12,6 +12,10 @@ builder.Services.AddSingleton<ICategoryDal, EfCategoryDal>();
 builder.Services.AddSingleton<IAboutDal, EfAboutDal>();
 builder.Services.AddSingleton<IBlogDal, EfBlogDal>();
 builder.Services.AddSingleton<IBlogService, BlogManager>();
+builder.Services.AddSingleton<IWriterDal, EfWriterDal>();
+builder.Services.AddSingleton<IWriterService, WriterManager>();
+builder.Services.AddSingleton<ICommentDal, EfCommentDal>();
+builder.Services.AddSingleton<ICommentService, CommentManager>();
 
 var app = builder.Build();
 

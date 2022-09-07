@@ -1,20 +1,28 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Business.Abstract;
+using Microsoft.AspNetCore.Mvc;
 
 namespace MvcUI.Controllers
 {
     public class CommentsController : Controller
     {
+        ICommentService _commentService;
+
+        public CommentsController(ICommentService commentService)
+        {
+            _commentService = commentService;
+        }
+
         public IActionResult Index()
         {
-            return View();
+            return View(_commentService.GetAll());
         }
         public PartialViewResult PartialAddCommand()
         {
             return PartialView();
         }
-        public PartialViewResult PartialCommandListByBlog()
+        public PartialViewResult PartialCommentListByBlog(int id)
         {
-            return PartialView();
+            return PartialView(_commentService.GetById(id));
         }
     }
 }
