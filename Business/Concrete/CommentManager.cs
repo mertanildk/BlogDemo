@@ -20,7 +20,7 @@ namespace Business.Concrete
 
         public void Add(Comment comment)
         {
-            throw new NotImplementedException();
+            _commentDal.Add(comment);
         }
 
         public void Delete(Comment comment)

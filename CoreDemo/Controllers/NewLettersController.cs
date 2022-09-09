@@ -13,16 +13,17 @@ namespace MvcUI.Controllers
             _newsLetterService = newsLetterService;
         }
 
-        public PartialViewResult SubsribeMail()
+        public IActionResult SubsribeMail()
         {
-            return PartialView();
+           
+            return View();
         }
         [HttpPost]
-        public PartialViewResult SubsribeMail(NewsLetter newsLatter)
+        public IActionResult SubsribeMail(NewsLetter newsLatter)
         {
             newsLatter.MailStatus = true;
             _newsLetterService.Add(newsLatter);
-            return PartialView();
+            return RedirectToAction("Index", "Blogs");
         }
 
     }
