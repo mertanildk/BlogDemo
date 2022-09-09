@@ -16,6 +16,8 @@ builder.Services.AddSingleton<IWriterDal, EfWriterDal>();
 builder.Services.AddSingleton<IWriterService, WriterManager>();
 builder.Services.AddSingleton<ICommentDal, EfCommentDal>();
 builder.Services.AddSingleton<ICommentService, CommentManager>();
+builder.Services.AddSingleton<INewsLetterService, NewsLetterManager>();
+builder.Services.AddSingleton<INewsLetterDal, EfNewsLetterDal>();
 
 var app = builder.Build();
 

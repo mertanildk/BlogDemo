@@ -8,6 +8,6 @@ namespace Entities.Concrete
         [Key]
         public int MailId { get; set; }
         public string Mail { get; set; }
-        public string MailStatus { get; set; }
+        public bool MailStatus { get; set; }
     }
 }
