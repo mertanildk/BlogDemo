@@ -10,14 +10,14 @@ using System.Threading.Tasks;
 
 namespace Business.ValidationRules.FluentValidation
 {
-    public class WriterValidation:AbstractValidator<Writer>
+    public class WriterValidation:AbstractValidator<Writer>,IValidator
     {
         public WriterValidation()
         {
-            RuleFor(writer => writer.Password).NotEmpty().WithMessage("Boş geçilemez");
+            RuleFor(writer => writer.Password).NotEmpty().MinimumLength(3).WithMessage("Boş geçilemez");
             //RuleFor(writer => writer.WriterName).NotEmpty().WithMessage("Boş geçilemez");
             RuleFor(writer => writer.Mail).NotEmpty().WithMessage("Boş geçilemez");
-            RuleFor(writer => writer.WriterName).Matches(@"((?=.\d)(?=.[a-z])(?=.*[A-Z]).{6,})");
+            RuleFor(writer => writer.Password).Matches(@"((?=.\d)(?=.[a-z])(?=.*[A-Z]).{6,})");
         }
  
     }

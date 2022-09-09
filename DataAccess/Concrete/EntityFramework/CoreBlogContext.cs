@@ -1,4 +1,5 @@
-﻿using Entity.Concrete;
+﻿using Entities.Concrete;
+using Entity.Concrete;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -20,5 +21,6 @@ namespace DataAccess.Concrete.EntityFramework
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<Writer> Writers { get; set; }
+        public DbSet<NewsLetter> NewsLetters { get; set; }
     }
 }

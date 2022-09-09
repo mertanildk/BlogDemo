@@ -1,0 +1,13 @@
+﻿using Core.Entites;
+using System.ComponentModel.DataAnnotations;
+
+namespace Entities.Concrete
+{
+    public class NewsLetter:IEntity
+    {
+        [Key]
+        public int MailId { get; set; }
+        public string Mail { get; set; }
+        public string MailStatus { get; set; }
+    }
+}
