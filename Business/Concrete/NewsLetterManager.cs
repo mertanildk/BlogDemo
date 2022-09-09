@@ -30,7 +30,7 @@ namespace Business.Concrete
 
         public List<NewsLetter> GetAll()
         {
-            throw new NotImplementedException();
+           return _newsLetterDal.GetAll();
         }
 
         public NewsLetter GetById(int id)
