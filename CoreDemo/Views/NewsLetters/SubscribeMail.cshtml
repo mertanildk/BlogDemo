@@ -7,24 +7,25 @@
     </form>
 
 </div>
-<script src="https://code.jquery.com/jquery-3.6.1.min.js" ></script>
-<script >
-    $(document).ready(function () {
-        $("#submitNews").click(function () {
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $("#submitNews").click(function() {
             var mail = $("#mail").val();
             $.ajax({
-               url: "/NewsLetters/SubscribeMail/",
+                url: "/NewsLetters/SubscribeMail/",
                 type: "POST",
                 data: { Mail: mail },
                 //success: function (result) {
                 //    alert(result);
                 //}
-        });
-    })});
+            });
+        })
+    });
 </script>
 
 
- 
+
 
 
 
