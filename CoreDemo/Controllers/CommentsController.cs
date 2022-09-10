@@ -17,9 +17,9 @@ namespace MvcUI.Controllers
         {
             return View(_commentService.GetAll());
         }
+        [HttpGet]
         public PartialViewResult PartialAddComment(int blogID)
         {
-            ViewBag.BlogID = blogID;
             return PartialView();
         }
 
@@ -28,14 +28,12 @@ namespace MvcUI.Controllers
         {
             comment.CommentDate = DateTime.Parse(DateTime.Now.ToShortDateString());
             comment.Status = true;
-            comment.BlogId = 3;
-
             _commentService.Add(comment);
             return PartialView();
         }
         public PartialViewResult PartialCommentListByBlog(int id)
         {
-            return PartialView(_commentService.GetById(id));
+            return PartialView(_commentService.GetAllByBlogId(id));
         }
     }
 

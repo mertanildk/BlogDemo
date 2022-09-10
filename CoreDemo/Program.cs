@@ -9,15 +9,25 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddSingleton<ICategoryService, CategoryManager>();
 builder.Services.AddSingleton<ICategoryDal, EfCategoryDal>();
+
+builder.Services.AddSingleton<IAboutService, AboutManager>();
 builder.Services.AddSingleton<IAboutDal, EfAboutDal>();
+
 builder.Services.AddSingleton<IBlogDal, EfBlogDal>();
 builder.Services.AddSingleton<IBlogService, BlogManager>();
+
 builder.Services.AddSingleton<IWriterDal, EfWriterDal>();
 builder.Services.AddSingleton<IWriterService, WriterManager>();
+
 builder.Services.AddSingleton<ICommentDal, EfCommentDal>();
 builder.Services.AddSingleton<ICommentService, CommentManager>();
+
 builder.Services.AddSingleton<INewsLetterService, NewsLetterManager>();
 builder.Services.AddSingleton<INewsLetterDal, EfNewsLetterDal>();
+
+builder.Services.AddSingleton<IContactService, ContactManager>();
+builder.Services.AddSingleton<IContactDal, EfContactDal>();
+
 
 var app = builder.Build();
 

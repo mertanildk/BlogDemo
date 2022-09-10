@@ -3,13 +3,35 @@
 <div class="comment-top">
     <h4>Leave a Comment</h4>
     <div class="comment-bottom">
-        <form asp-action="PartialAddComment" asp-controller="Comments" method="post">
+        <form method="post">
             @*<label  name="BlogId" >@ViewBag.BlogID</label>*@
-            <input class="form-control" type="text" name="UserName" placeholder="UserName" required="">
-            <input class="form-control" type="text" name="Title" placeholder="Title" required="">
-            <textarea class="form-control" name="Content" placeholder="Message..." required=""></textarea>
-            <button type="submit" class="btn btn-primary submit">Submit</button>
+            <input class="form-control" id="username" type="text" name="UserName" placeholder="UserName" required="">
+            <input class="form-control" type="text" id="title" name="Title" placeholder="Title" required="">
+            <textarea class="form-control" name="Content" id="content" placeholder="Message..." required=""></textarea>
+            <button type="submit" id="submit" class="btn btn-primary submit">Submit</button>
         </form>
     </div>
 </div>
 </div>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $("#submit").click(function() {
+            var username = $("#username").val();
+            var title = $("#title").val();
+            var content = $("#content").val();
+            var BlogId = @Context.GetRouteData().Values["id"];
+            $.ajax({
+                url: "/Comments/PartialAddComment/",
+                type: "POST",
+                data: { UserName: username, Title: title, Content: content, BlogId: BlogId },
+                success: function() {
+                    window.location.href = "/Blogs/BlogsDetails/" + BlogId;
+
+                }
+            });
+
+        })
+
+    });
+</script>
