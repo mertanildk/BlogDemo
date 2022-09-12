@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Entity.Concrete;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -25,6 +26,21 @@ namespace MvcUI.Controllers
             var blog = _blogService.GetById(id);
             return View(blog);
         }
-       
+        public IActionResult BlogListByWriter(int id)
+        {
+            var blogOfWriter = _blogService.GetBlogListByWriterID(3);
+            blogOfWriter = _blogService.IncludeCategory();
+            return View(blogOfWriter);
+        }
+
+        public IActionResult AddBlogByWriter()
+        {
+            return View();
+        }
+        public IActionResult AddBlogByWriter(Blog blog
+            )
+        {
+            return View();
+        }
     }
 }
