@@ -40,7 +40,6 @@ builder.Services.AddMvcCore(config =>
 builder.Services.AddMvcCore();
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
        .AddCookie(x => { x.LoginPath = "/Login/Index"; });
-builder.Services.AddSession();
 
 var app = builder.Build();
 // Configure the HTTP request pipeline.
@@ -54,7 +53,6 @@ app.UseStatusCodePagesWithReExecute("/ErrorPage/Error404", "?code={0}");
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseAuthentication();
-app.UseSession();
 app.UseRouting();
 
 app.UseAuthorization();

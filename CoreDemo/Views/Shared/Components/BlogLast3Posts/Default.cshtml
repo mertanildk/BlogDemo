@@ -1,0 +1,33 @@
+﻿@model List<Entity.Concrete.Blog>
+
+
+<div class="tech-btm">
+    <h3>Latest Posts</h3>
+    @foreach (var blog in Model)
+    {
+        <div class="blog-grids row mb-3">
+            <div class="col-md-5 blog-grid-left">
+                <a href="/Blogs/BlogDetails/@blog.BlogId">
+                    <img src="@blog.Image" class="card-img-top img-fluid" alt="">
+                </a>
+            </div>
+            <div class="col-md-7 blog-grid-right">
+
+                <h5>
+                    <a href="/Blogs/BlogDetails/@blog.BlogId"></a>
+                </h5>
+                <div class="sub-meta">
+                    <span style="color:wheat;">@blog.Title</span>
+                    <br />
+                    <span style="color:white;">@blog.Content.Substring(0,blog.Content.Substring(0,25).LastIndexOf(" "))...</span>
+                    <br />
+                    <span>
+                        <i class="far fa-clock"></i> @(((DateTime)blog.CreateDate).ToString("dd-MMM-yy"))
+                    </span>
+                </div>
+            </div>
+
+        </div>
+    }
+
+</div>

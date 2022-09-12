@@ -3,19 +3,17 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace MvcUI.ViewComponents.Blog
 {
-    public class WriterLastBlog:ViewComponent
+    public class BlogLast3Posts:ViewComponent
     {
         IBlogService _blogService;
 
-        public WriterLastBlog(IBlogService blogService)
+        public BlogLast3Posts(IBlogService blogService)
         {
             _blogService = blogService;
         }
         public IViewComponentResult Invoke()
         {
-            var writers = _blogService.GetBlogListByWriterID(2);
-            return View(writers);
+            return View(_blogService.GetAll().Take(3).ToList());
         }
-        
     }
 }

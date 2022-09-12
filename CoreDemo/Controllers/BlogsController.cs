@@ -1,8 +1,10 @@
 ﻿using Business.Abstract;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MvcUI.Controllers
 {
+    [AllowAnonymous]
     public class BlogsController : Controller
     {
         IBlogService _blogService;
@@ -14,6 +16,7 @@ namespace MvcUI.Controllers
 
         public IActionResult Index()
         {
+            
             return View(_blogService.IncludeCategory()) ;
         }
 
@@ -22,5 +25,6 @@ namespace MvcUI.Controllers
             var blog = _blogService.GetById(id);
             return View(blog);
         }
+       
     }
 }
