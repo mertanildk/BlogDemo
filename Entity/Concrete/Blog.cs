@@ -14,7 +14,9 @@ namespace Entity.Concrete
         public string Content { get; set; }
         public string ThumbnailImage { get; set; }
         public string Image { get; set; }
-        public DateTime CreateDate { get; set; }
+
+
+        public DateTime CreateDate { get; set; } = DateTime.Now;
         public bool Status { get; set; }
         public int CategoryId { get; set; }
         public Category Category { get; set; }

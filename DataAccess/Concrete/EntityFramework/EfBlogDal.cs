@@ -12,6 +12,15 @@ namespace DataAccess.Concrete.EntityFramework
 {
     public class EfBlogDal : EfEntityRepositoryBase<Blog, CoreBlogContext>, IBlogDal
     {
+        public List<Blog> GetListWithCategoryByWriter(int id)
+        {
+            using (CoreBlogContext context = new CoreBlogContext())
+            {
+
+                return context.Blogs.Include(x => x.Category).Where(c=>c.WriterId==id) .ToList();
+            }
+        }
+
         public List<Blog> IncludeCategory()
         {
             using (CoreBlogContext context = new CoreBlogContext())

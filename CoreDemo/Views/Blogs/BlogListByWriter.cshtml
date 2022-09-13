@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/WriterLayout.cshtml";
 }
 
-<h1>Blogs Of The Writer</h1>
+<h1>Author's Blogs</h1>
 <table class="table table-bordered">
     <tr>
         <th>#</th>
@@ -15,18 +15,62 @@
         <th>Delete</th>
         <th>Update</th>
     </tr>
-    @foreach (var blog in Model)
+    @foreach (var item in Model)
     {
         <tr>
-            <td>@blog.BlogId</td>
-            <td>@blog.Title</td>
-            <td>@blog.CreateDate</td>
-            <td>@blog.Category.CategoryName</td>
-            <td>@blog.Status</td>
-            <td><a class="btn btn-outline-danger">Delete</a></td>
-            <td><a class="btn btn-outline-info">Update</a></td>
+            <td id="ID">@item.BlogId</td>
+            <td>@item.Title</td>
+            <td>@item.CreateDate.ToString("yyyy-M-d dddd")</td>
+            <td>@item.Category.CategoryName</td>
+            <td>
+                @if (item.Status)
+                {
+                    <span class="badge badge-success">Active</span>
+                }
+                else
+                {
+                    <span class="badge badge-secondary">Inactive</span>
+                }
+            </td>
+            <td>
+                <a test="@item.BlogId" id="deleteItem" class="btn btn-danger">
+                    Delete
+                </a>
+            </td>
+            <td>
+                <a href="" class="btn btn-warning">Update</a>
+            </td>
         </tr>
     }
- </table>
-<a href="#" class="btn btn-primary">New Blog</a>
+</table>
+<a asp-action="AddBlogByWriter" asp-controller="Blogs" class="btn btn-primary">New Blog</a>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    let buttons = document.querySelectorAll('#deleteItem');
+    buttons.forEach(button => {
+        button.addEventListener('click', function() {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire(
+                        'Deleted!',
+                        'Your file has been deleted.',
+                        'success'
+                    )
+                    
+                    var id = button.getAttribute('test');
+                    window.location.href = "/Blogs/DeleteBlog/" + id;
+                }
+            })
 
+
+        });
+    });
+</script>

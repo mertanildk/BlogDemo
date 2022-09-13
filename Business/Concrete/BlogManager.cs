@@ -25,7 +25,7 @@ namespace Business.Concrete
 
         public void Delete(Blog blog)
         {
-            throw new NotImplementedException();
+            _blogDal.Delete(blog);
         }
 
         public List<Blog> GetAll()
@@ -43,6 +43,11 @@ namespace Business.Concrete
             return _blogDal.Get(x=>x.BlogId==id);
         }
 
+        public List<Blog> GetListWithCategoryByWriter(int id)
+        {
+            return _blogDal.GetListWithCategoryByWriter(id);
+        }
+
         public List<Blog> IncludeCategory()
         {
             return _blogDal.IncludeCategory();
@@ -50,7 +55,7 @@ namespace Business.Concrete
 
         public void Update(Blog blog)
         {
-            throw new NotImplementedException();
+            _blogDal.Update(blog);
         }
         
     }

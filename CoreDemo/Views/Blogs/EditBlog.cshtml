@@ -1,0 +1,43 @@
+﻿@model Entity.Concrete.Blog
+@{
+    ViewData["Title"] = "EditBlog";
+    Layout = "WriterLayout";
+}
+
+<h1>Edit Blog</h1>
+<br />
+<form method="post" asp-action="EditBlog" asp-controller="Blogs">
+
+    <input type="text" class="form-control" asp-for="BlogId" required="" style="display:none;">
+    <label>Blog Name</label>
+    <input type="text" class="form-control" asp-for="Title" required="">
+    <br />
+    <label>Blog Content</label>
+    <input type="text" class="form-control" asp-for="Content" required="">
+    <br />
+    <label>Blog ThumbnailImage</label>
+    <input type="text" class="form-control" asp-for="ThumbnailImage" required="">
+    <br />
+    <label>Blog Image</label>
+    <input type="text" class="form-control" asp-for="Image" required="">
+    <br />
+    <label>Blog Date</label>
+    <input type="text" class="form-control" asp-for="CreateDate" required="">
+    <br />
+    <label>Blog Status</label>
+    <select class="form-control" name="Status">
+        <option value="True">True</option>
+        <option value="False">False</option>
+    </select>
+    <br />
+    <label>Category</label>
+    <select asp-items="@ViewBag.CategoryList" asp-for="CategoryId" class="form-control"></select>
+    <br />
+    <button class="btn btn-info">Update</button>
+
+</form>
+
+
+
+
+
