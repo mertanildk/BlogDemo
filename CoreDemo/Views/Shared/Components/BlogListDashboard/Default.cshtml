@@ -1,0 +1,44 @@
+﻿@model List<Entity.Concrete.Blog>
+
+<div class="row">
+    <div class="col-12 grid-margin">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Last 10 Blogs</h4>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th> Blog Title </th>
+                                <th> Subject </th>
+                                <th> Category </th>
+                                <th> Date </th>
+                                <th> ID </th>
+                                <th>Details</th>
+                                <th>Edit</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var blog in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        <img src="@blog.Image" class="mr-2" alt="image">@blog.Title
+                                    </td>
+                                    <td> Fund is not recieved </td>
+                                    <td>
+                                        <label class="badge badge-gradient-success">@blog.Category.CategoryName</label>
+                                    </td>
+                                    <td> @(((DateTime)blog.CreateDate).ToString("dd-MMM-yy")) </td>
+                                    <td> @blog.BlogId </td>
+                                    <td><a class="badge badge-outline-primary" asp-action="BlogDetails" asp-controller="Blogs" asp-route-id="@blog.BlogId">Details</a></td>
+                                    <td><a  class="badge badge-outline-success" asp-action="EditBlog" asp-controller="Blogs" asp-route-id="@blog.BlogId">Update</a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
