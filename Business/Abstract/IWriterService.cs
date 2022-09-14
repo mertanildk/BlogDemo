@@ -15,5 +15,6 @@ namespace Business.Abstract
         void Update(Writer writer);
         Writer GetById(int id);
         List<Writer> GetAll();
+
     }
 }
