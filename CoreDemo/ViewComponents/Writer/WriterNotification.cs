@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Entities.Concrete;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MvcUI.ViewComponents.Writer
@@ -14,7 +15,8 @@ namespace MvcUI.ViewComponents.Writer
 
         public IViewComponentResult Invoke()
         {
-            return View(_notificationService.GetAll());
+            
+            return View(_notificationService.GetAll()) ;
         }
     }
 }

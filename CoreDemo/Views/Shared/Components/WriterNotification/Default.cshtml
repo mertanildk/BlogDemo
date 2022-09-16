@@ -2,13 +2,13 @@
 
 <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
     <h6 class="p-3 mb-0">Notifications</h6>
-    @foreach (var notification in Model)
+    @foreach (var notification in Model.Where(x => x.Status == true).OrderByDescending(x => x.Date).Take(3))
     {
         <div class="dropdown-divider"></div>
         <a class="dropdown-item preview-item">
             <div class="preview-thumbnail">
-                <div class="@notification.Color">
-                    <i class="@notification.TypeSymbol"></i>
+                <div class=" @notification.Color">
+                    <i class=" @notification.TypeSymbol"></i>
                 </div>
             </div>
             <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
