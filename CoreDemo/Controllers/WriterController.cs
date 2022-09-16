@@ -4,7 +4,6 @@ using Entity.Concrete;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using MvcUI.Models;
 
 namespace MvcUI.Controllers
 {
