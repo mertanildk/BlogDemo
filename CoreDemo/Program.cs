@@ -34,6 +34,8 @@ builder.Services.AddSingleton<IContactDal, EfContactDal>();
 builder.Services.AddSingleton<INotificationService, NotificationManager>();
 builder.Services.AddSingleton<INotificationDal, EfNotificationDal>();
 
+builder.Services.AddSingleton<IMessageService, MessageManager>();
+builder.Services.AddSingleton<IMessageDal, EfMessageDal>();
 
 builder.Services.AddMvcCore(config =>
 {

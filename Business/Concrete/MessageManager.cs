@@ -41,7 +41,7 @@ namespace Business.Concrete
 
         public List<Message> GetInboxListByWriter(string receiverEmail)
         {
-            return (List<Message>)_messageDal.GetAll().Where(x => x.Receiver == receiverEmail);
+            return _messageDal.GetAll().Where(x => x.Receiver == receiverEmail).ToList();
         }
 
         public void Update(Message message)
