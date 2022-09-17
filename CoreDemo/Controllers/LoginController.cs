@@ -35,13 +35,11 @@ namespace MvcUI.Controllers
                     new Claim(ClaimTypes.Name,writer.Mail)
                 };
                 var userIdentity = new ClaimsIdentity(claims, "login");//Neden 2.parametre olarak değer gönderiyoruz.
-                ClaimsPrincipal principal= new ClaimsPrincipal(userIdentity);
+                ClaimsPrincipal principal = new ClaimsPrincipal(userIdentity);
                 await HttpContext.SignInAsync(principal);
                 return RedirectToAction("Index", "Writer");
             }
             return View();
         }
-
-
     }
 }

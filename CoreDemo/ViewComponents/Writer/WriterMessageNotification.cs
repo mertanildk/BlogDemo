@@ -6,16 +6,16 @@ namespace MvcUI.ViewComponents.Writer
     public class WriterMessageNotification:ViewComponent
     {
 
-        IMessageService _messageService;
+        IMessageWithWriterService _messageService;
 
-        public WriterMessageNotification(IMessageService messageService)
+        public WriterMessageNotification(IMessageWithWriterService messageService)
         {
             _messageService = messageService;
         }
 
         public IViewComponentResult Invoke()
         {
-            return View(_messageService.GetInboxListByWriter("mertanildeke@gmail.com"));
+            return View(_messageService.GetListWithMessageByWriter(3));
         }
     }
 }

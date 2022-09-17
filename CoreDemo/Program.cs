@@ -34,6 +34,9 @@ builder.Services.AddSingleton<IContactDal, EfContactDal>();
 builder.Services.AddSingleton<INotificationService, NotificationManager>();
 builder.Services.AddSingleton<INotificationDal, EfNotificationDal>();
 
+builder.Services.AddSingleton<IMessageWithWriterService, MessageWithWriterManager>();
+builder.Services.AddSingleton<IMessageWithWriterDal, EfMessageWithWriterDal>();
+
 builder.Services.AddSingleton<IMessageService, MessageManager>();
 builder.Services.AddSingleton<IMessageDal, EfMessageDal>();
 

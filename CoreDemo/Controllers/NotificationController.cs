@@ -16,5 +16,9 @@ namespace MvcUI.Controllers
         {
             return View();
         }
+        public IActionResult AllNotification()
+        {
+            return View(_notificationService.GetAll());
+        }
     }
 }

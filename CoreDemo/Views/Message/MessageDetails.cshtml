@@ -1,0 +1,17 @@
+﻿@model Entities.Concrete.MessageWithWriter
+@{
+    ViewData["Title"] = "MessageDetails";
+    Layout = "~/Views/Shared/WriterLayout.cshtml";
+}
+<h1>Message Details</h1>
+
+<label>Status</label>
+<label asp-for="Status" class="form-control"></label>
+<br />
+<label>Subject</label>
+<label asp-for="Subject" class="form-control"></label>
+<br />
+<label>Message</label>
+<label asp-for="MessageDetails" class="form-control"></label>
+<br />
+<button class="btn btn-outline-dribbble">Go back to Messages</button>

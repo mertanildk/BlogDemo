@@ -10,6 +10,6 @@ namespace Entities.Concrete
         public string Subject { get; set; }
         public string MessageDetails { get; set; }
         public DateTime MessageDate { get; set; }
-        public int Status { get; set; }
+        public bool Status { get; set; }
     }
 }
