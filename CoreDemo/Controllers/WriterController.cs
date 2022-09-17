@@ -37,7 +37,7 @@ namespace MvcUI.Controllers
 
         public IActionResult WriterEditProfile()
         {
-            return View(_writerService.GetById(3));
+            return View(_writerService.GetByWriterMail(User.Identity.Name));
         }
         [HttpPost]
         public IActionResult WriterEditProfile(Writer writer)

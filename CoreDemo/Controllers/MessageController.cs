@@ -6,15 +6,18 @@ namespace MvcUI.Controllers
     public class MessageController : Controller
     {
         IMessageWithWriterService _messageWithWriterService;
+        IWriterService _writerService;
 
-        public MessageController(IMessageWithWriterService messageWithWriterService)
+        public MessageController(IMessageWithWriterService messageWithWriterService, IWriterService writerService)
         {
             _messageWithWriterService = messageWithWriterService;
+            _writerService = writerService;
         }
 
         public IActionResult Inbox()
         {
-            return View(_messageWithWriterService.GetListWithMessageByWriter(3));
+            var writerId = _writerService.GetByWriterMail(User.Identity.Name).WriterId;
+            return View(_messageWithWriterService.GetListWithMessageByWriter(writerId));
         }
         public IActionResult MessageDetails(int id)
         {

@@ -13,12 +13,14 @@ namespace MvcUI.Controllers
     {
         IBlogService _blogService;
         ICategoryService _categoryService;
+        IWriterService _writerService;
         BlogValidation validationRules = new BlogValidation();
         ValidationResult results = new ValidationResult();
-        public BlogsController(IBlogService blogService, ICategoryService categoryService)
+        public BlogsController(IBlogService blogService, ICategoryService categoryService, IWriterService writerService)
         {
             _blogService = blogService;
             _categoryService = categoryService;
+            _writerService = writerService;
         }
 
         public IActionResult Index()
@@ -32,9 +34,10 @@ namespace MvcUI.Controllers
             var blog = _blogService.GetById(id);
             return View(blog);
         }
-        public IActionResult BlogListByWriter(int id)
+        public IActionResult BlogListByWriter()
         {
-            var blogOfWriter = _blogService.GetListWithCategoryByWriter(4);
+            var writerId = _writerService.GetByWriterMail(User.Identity.Name).WriterId;
+            var blogOfWriter = _blogService.GetListWithCategoryByWriter(writerId);
             return View(blogOfWriter);
         }
 
@@ -55,7 +58,7 @@ namespace MvcUI.Controllers
         {
             blog.Status = true;
             blog.CreateDate = DateTime.Parse(DateTime.Now.ToShortDateString());
-            blog.WriterId = 4;
+            blog.WriterId = _writerService.GetByWriterMail(User.Identity.Name).WriterId;
             results = validationRules.Validate(blog);
             if (!results.IsValid)
             {
@@ -78,13 +81,13 @@ namespace MvcUI.Controllers
         [HttpPost]
         public IActionResult EditBlog(Blog blog)
         {
-            blog.WriterId = 3;
+            blog.WriterId = _writerService.GetByWriterMail(User.Identity.Name).WriterId;
             blog.CreateDate = DateTime.Parse(DateTime.Now.ToShortDateString());
             _blogService.Update(blog);
             return RedirectToAction("BlogListByWriter","Blogs");
         }
 
-
+        
 
 
 
