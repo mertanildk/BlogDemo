@@ -14,6 +14,7 @@ namespace Business.Abstract
         void Delete(Writer writer);
         void Update(Writer writer);
         Writer GetById(int id);
+        Writer GetByWriterMail(string email);
         List<Writer> GetAll();
 
     }

@@ -39,6 +39,11 @@ namespace Business.Concrete
             return _writerDal.Get(x=>x.WriterId==id);
         }
 
+        public Writer GetByWriterMail(string email)
+        {
+            return _writerDal.GetByWriterMail(email);
+        }
+
         public void Update(Writer writer)
         {
             _writerDal.Update(writer);

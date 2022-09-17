@@ -14,7 +14,7 @@ namespace MvcUI.ViewComponents.Writer
 
         public IViewComponentResult Invoke()
         {
-            return View(_writerService.GetById(3));
+            return View(_writerService.GetByWriterMail(User.Identity.Name));
         }
     }
 }

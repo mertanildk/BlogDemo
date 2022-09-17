@@ -22,6 +22,8 @@ namespace MvcUI.Controllers
 
         public IActionResult Index()
         {
+            var writer = _writerService.GetByWriterMail(User.Identity.Name);
+            ViewBag.UserMail = writer.Mail;
             return View();
         }
         public PartialViewResult WriterNavbarPartial()
