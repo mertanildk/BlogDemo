@@ -4,14 +4,16 @@
     Layout = "~/Views/Shared/WriterLayout.cshtml";
 }
 <h1>Message Details</h1>
-
-<label>Status</label>
-<label asp-for="Status" class="form-control"></label>
-<br />
-<label>Subject</label>
-<label asp-for="Subject" class="form-control"></label>
-<br />
-<label>Message</label>
-<label asp-for="MessageDetails" class="form-control"></label>
-<br />
-<button class="btn btn-outline-dribbble">Go back to Messages</button>
+<form asp-action="MessageDetails" asp-controller="Messages">
+    <label>ID</label>
+    <input asp-for="MessageId" class="form-control" disabled style="background-color:transparent;">
+    <br />
+    <label>Subject</label>
+    <input asp-for="Subject" class="form-control" disabled   style="background-color:transparent;"/>
+    <br />
+    <label>Message</label>
+    <textarea type="text" class="form-control" asp-for="MessageDetails" 
+    rows="4" cols="50" disabled style="background-color:transparent;"></textarea>
+    <br />
+    <a asp-action="Inbox" class="btn btn-outline-dribbble">Go back to Messages</a>
+</form>

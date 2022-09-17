@@ -40,7 +40,7 @@ namespace Business.Concrete
 
         public MessageWithWriter GetById(int id)
         {
-            throw new NotImplementedException();
+            return _messageDal.Get(x => x.MessageId == id);
         }
 
         public List<MessageWithWriter> GetInboxListByWriter(int receiverId)
