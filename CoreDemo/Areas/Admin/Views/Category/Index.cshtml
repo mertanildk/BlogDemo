@@ -1,0 +1,26 @@
+﻿@model List<Entity.Concrete.Category>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/WriterLayout.cshtml";
+}
+<h1></h1>
+<table class="table">
+<tr>
+    <th>#</th>
+    <th>Category Name</th>
+    <th>Do Passive</th>
+    <th>Do Active</th>
+    <th>Edit</th>
+</tr>
+
+@foreach (var category in Model)
+{
+    <tr>
+        <td>@category.CategoryId</td>
+        <td>@category.CategoryName</td>
+            <td><a href="#" class="btn btn-outline-google">Passive</a></td>
+            <td><a href="#" class="btn btn-outline-facebook">Active</a></td>
+            <td><a href="#" class="btn btn-outline-github">Edit</a></td>
+    </tr>
+}
+</table>
