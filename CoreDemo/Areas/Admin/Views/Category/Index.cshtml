@@ -1,26 +1,143 @@
-﻿@model List<Entity.Concrete.Category>
+﻿@using X.PagedList
+@using X.PagedList.Mvc.Core
+@model IPagedList<Entity.Concrete.Category>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/WriterLayout.cshtml";
 }
 <h1></h1>
-<table class="table">
-<tr>
-    <th>#</th>
-    <th>Category Name</th>
-    <th>Do Passive</th>
-    <th>Do Active</th>
-    <th>Edit</th>
-</tr>
+<div class="container">
+    <table class="table">
+        <tr>
+            <th>#</th>
+            <th>Category Name</th>
+            <th>Status</th>
+            <th>Do Passive</th>
+            <th>Do Active</th>
+            <th>Edit</th>
+        </tr>
 
-@foreach (var category in Model)
-{
-    <tr>
-        <td>@category.CategoryId</td>
-        <td>@category.CategoryName</td>
-            <td><a href="#" class="btn btn-outline-google">Passive</a></td>
-            <td><a href="#" class="btn btn-outline-facebook">Active</a></td>
-            <td><a href="#" class="btn btn-outline-github">Edit</a></td>
-    </tr>
-}
-</table>
+        @foreach (var category in Model)
+        {
+            <tr>
+                <td>@category.CategoryId</td>
+                <td>@category.CategoryName</td>
+                <td class="category">
+                    @if (category.Status)
+                    {
+                        <span class="badge badge-success">Active</span>
+                    }
+                    else
+                    {
+                        <span class="badge badge-secondary">Inactive</span>
+                    }
+                </td>
+                <td>
+                    @if (category.Status)
+                    {
+                        <button categoryId=@category.CategoryId id="BtnDelete" class="btn btn-outline-google">Passive</button>
+                    }
+                    else
+                    {
+                        <button categoryId=@category.CategoryId id="BtnDelete" class="btn btn-secondary" type="button" disabled>Passive</button>
+                    }
+                </td>
+                <td>
+                        @if (category.Status)
+                        {
+                        <button categoryId1=@category.CategoryId id="BtnActive" class="btn btn-secondary"type="button" disabled>Active</button>
+                        }
+                        else
+                        {
+                        <button categoryId1=@category.CategoryId id="BtnActive" class="btn btn-outline-twitter" type="button">Active</button>
+                        }
+                </td>
+                <td><a href="Category/EditCategory/@category.CategoryId" class="btn btn-outline-github">Edit</a></td>
+            </tr>
+        }
+    </table>
+    <a href="Category/AddCategory" class="btn btn-outline-twitter">Add Category</a>
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+
+</div>
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+
+    let buttons = document.querySelectorAll('#BtnDelete');
+    let buttonsActive = document.querySelectorAll('#BtnActive');
+
+    buttons.forEach(button => {
+        button.addEventListener('click', function () {
+            Swal.fire({
+
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+
+            }).then((result) => {
+
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "Your category has been deleted.",
+                        showConfirmButton: false,
+
+                    })
+                    let id = button.getAttribute('categoryId');
+                    let row = button.parentNode.parentNode;
+                    $.ajax({
+                        type: "GET",
+                        url: "Category/DeleteCategory/",
+                        data: { id: id },
+                        success: setTimeout(function () {
+                            location.reload();
+                        }, 1000),
+
+                    })
+                }
+            })
+        })
+    })
+    buttonsActive.forEach(buttonActive => {
+        buttonActive.addEventListener('click', function () {
+            Swal.fire({
+
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+
+            }).then((result) => {
+
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "Your category has been deleted.",
+                        showConfirmButton: false,
+
+                    })
+                    let id = buttonActive.getAttribute('categoryId1');
+                    $.ajax({
+                        type: "GET",
+                        url: "Category/ActiveCategory/",
+                        data: { id: id },
+                        success: setTimeout(function () {
+                            location.reload();
+                        }, 1000),
+
+                    })
+                }
+            })
+        })
+    })
+</script>

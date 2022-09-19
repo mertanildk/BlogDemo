@@ -1,0 +1,26 @@
+﻿@model Entity.Concrete.Category
+@{
+    ViewData["Title"] = "AddCategory";
+    Layout = "~/Views/Shared/WriterLayout.cshtml";
+}
+
+
+<h2>Add Category</h2>
+<br />
+
+<form asp-area="Admin" asp-action="AddCategory" asp-controller="Category" method="post">
+
+    <label>Category Name</label>
+    @Html.TextBoxFor(x => x.CategoryName, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.CategoryName, "", new { @class = "text-danger" })
+    <br>
+
+    <label>Desciption</label>
+    @Html.TextBoxFor(x => x.Description, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.Description, "", new { @class = "text-danger" })
+
+    <br>
+    <button class="btn btn-primary">Add</button>
+</form>
+
+

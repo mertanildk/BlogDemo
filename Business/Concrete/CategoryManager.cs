@@ -16,12 +16,12 @@ namespace Business.Concrete
 
         public void Add(Category category)
         {
-            throw new NotImplementedException();
+            _categoryDal.Add(category);
         }
 
         public void Delete(Category category)
         {
-            throw new NotImplementedException();
+            _categoryDal.Delete(category);
         }
 
         public List<Category> GetAll()
@@ -31,12 +31,12 @@ namespace Business.Concrete
 
         public Category GetById(int id)
         {
-            throw new NotImplementedException();
+            return _categoryDal.Get(x => x.CategoryId == id);
         }
 
         public void Update(Category category)
         {
-            throw new NotImplementedException();
+            _categoryDal.Update(category);
         }
     }
 }

@@ -87,12 +87,6 @@ namespace MvcUI.Controllers
             return RedirectToAction("BlogListByWriter","Blogs");
         }
 
-        
-
-
-
-
-
 
 
         private List<SelectListItem> CategoryTextAndValue()
