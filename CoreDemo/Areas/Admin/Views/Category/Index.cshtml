@@ -3,7 +3,7 @@
 @model IPagedList<Entity.Concrete.Category>
 @{
     ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/WriterLayout.cshtml";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
 <h1></h1>
 <div class="container">
@@ -43,14 +43,14 @@
                     }
                 </td>
                 <td>
-                        @if (category.Status)
-                        {
-                        <button categoryId1=@category.CategoryId id="BtnActive" class="btn btn-secondary"type="button" disabled>Active</button>
-                        }
-                        else
-                        {
-                        <button categoryId1=@category.CategoryId id="BtnActive" class="btn btn-outline-twitter" type="button">Active</button>
-                        }
+                    @if (category.Status)
+                    {
+                    <button categoryId1=@category.CategoryId id="BtnActive" class="btn btn-secondary"type="button" disabled>Active</button>
+                    }
+                    else
+                    {
+                    <button categoryId1=@category.CategoryId id="BtnActive" class="btn btn-outline-twitter" type="button">Active</button>
+                    }
                 </td>
                 <td><a href="Category/EditCategory/@category.CategoryId" class="btn btn-outline-github">Edit</a></td>
             </tr>
