@@ -3,13 +3,13 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace MvcUI.Areas.Admin.ViewComponents.Statistics
 {
-    public class Statistic:ViewComponent
+    public class StatisticFirst:ViewComponent
     {
         IBlogService _blogService;
         IMessageService _messageService;
         ICommentService _commentService;
 
-        public Statistic(IBlogService blogService, IMessageService messageService, ICommentService commentService)
+        public StatisticFirst(IBlogService blogService, IMessageService messageService, ICommentService commentService)
         {
             _blogService = blogService;
             _messageService = messageService;
