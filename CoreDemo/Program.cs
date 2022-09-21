@@ -40,6 +40,9 @@ builder.Services.AddSingleton<IMessageWithWriterDal, EfMessageWithWriterDal>();
 builder.Services.AddSingleton<IMessageService, MessageManager>();
 builder.Services.AddSingleton<IMessageDal, EfMessageDal>();
 
+builder.Services.AddSingleton<IAdminService, AdminManager>();
+builder.Services.AddSingleton<IAdminDal, EfAdminDal>();
+
 builder.Services.AddMvcCore(config =>
 {
     var policy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();

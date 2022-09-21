@@ -16,6 +16,7 @@ namespace MvcUI.Areas.Admin.ViewComponents.Statistics
         {
             var Last5Blogs = _blogService.GetAll().OrderByDescending(x => x.CreateDate).Take(3).ToList();
             ViewBag.LastBlogName = _blogService.GetAll().OrderByDescending(x => x.CreateDate).FirstOrDefault().Title;
+            ViewBag.LastBlogDesc = _blogService.GetAll().OrderByDescending(x => x.CreateDate).FirstOrDefault().Content;
             return View(Last5Blogs);
         }
     }
