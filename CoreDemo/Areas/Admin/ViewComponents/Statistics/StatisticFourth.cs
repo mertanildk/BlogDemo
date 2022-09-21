@@ -14,7 +14,10 @@ namespace MvcUI.Areas.Admin.ViewComponents.Statistics
 
         public IViewComponentResult Invoke()
         {
-            ViewBag.AdminName = _adminService.GetById(1).Name;
+            var admin = _adminService.GetById(1);
+            ViewBag.AdminName = admin.Name;
+            ViewBag.AdminImage = admin.ImageURL;
+            ViewBag.AdminDescription = admin.ShortDescription;
             return View();
         }
     }
