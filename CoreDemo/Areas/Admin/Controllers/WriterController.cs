@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Entity.Concrete;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
@@ -20,14 +21,28 @@ namespace MvcUI.Areas.Admin.Controllers
         }
         public IActionResult WriterListAll()
         {
-            var jsonBlogs = JsonConvert.SerializeObject(_writerService.GetAll());
-            return Json(jsonBlogs);
+            var jsonWriters = JsonConvert.SerializeObject(_writerService.GetAll());
+            return Json(jsonWriters);
         }
         
         public IActionResult GetWriterById(int writerId)
         {
-            var jsonBlogs = JsonConvert.SerializeObject(_writerService.GetById(writerId));
-            return Json(jsonBlogs);
+            var jsonWriter = JsonConvert.SerializeObject(_writerService.GetById(writerId));
+            return Json(jsonWriter);
+        }
+        
+        [HttpPost]
+        public IActionResult AddWriter(Writer writer)
+        {
+            _writerService.Add(writer);
+            var jsonWriter = JsonConvert.SerializeObject(writer);
+            return Json(jsonWriter);
+        }
+        public IActionResult DeleteWriter(int writerId)
+        {
+            var writerToDelete = _writerService.GetById(writerId);
+            _writerService.Delete(writerToDelete);
+            return Json(writerToDelete);
         }
 
     }
