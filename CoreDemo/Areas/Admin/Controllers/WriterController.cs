@@ -44,6 +44,12 @@ namespace MvcUI.Areas.Admin.Controllers
             _writerService.Delete(writerToDelete);
             return Json(writerToDelete);
         }
+        public IActionResult UpdateWriter(Writer writer)
+        {
+            _writerService.Update(writer);
+            var jsonWriter = JsonConvert.SerializeObject(writer);
+            return Json(jsonWriter);
+        }
 
     }
 }

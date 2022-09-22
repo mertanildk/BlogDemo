@@ -12,7 +12,7 @@
 <button type="button" id="btnUpdateWriter" class="btn btn-outline-warning">Update Author</button>
 <button type="button" id="btnDeleteWriter" class="btn btn-outline-danger">Delete Author</button>
 
-<hr />
+<hr />  
 <div id="writerlist"></div>
 <br>
 <hr />
@@ -34,7 +34,7 @@
 
 
 <div>
-    <input class="form-control" type="text" id="txtId" placeholder="Enter the Author ID">
+    <input class="form-control" type="text" id="txtId" placeholder="TXT ID BURASI">
 </div>
 
 
@@ -70,15 +70,15 @@
                 success: function (func) {
                     let writer = jQuery.parseJSON(func);
                     let getValue = `<table class="table table-bordered"> <tr><th>Author Id</th> <th>Author Full Name</th
-                                                        ></tr> <tr><td>${writer.WriterId}</td><td>${writer.WriterName}</td></tr></table>`;
+                                                ></tr> <tr><td>${writer.WriterId}</td><td>${writer.WriterName}</td></tr></table>`;
                     $("#writer").html(getValue);
                 }
             })
         });
 
 
-        $("#btnAddWriter").click(function () {
-            let writer = {
+        $("#btnAddWriter").click(function(){
+            let writer={
                 WriterName: $("#writerName").val(),
                 About: $("#writerAbout").val(),
                 Image: $("#writerImage").val(),
@@ -87,10 +87,11 @@
 
             }
             $.ajax({
-                type: "POST",
-                url: "/Admin/Writer/AddWriter/",
-                data: writer,
-                success: function (func) {
+                type:"POST",
+                url:"/Admin/Writer/AddWriter/",
+                data:writer,
+                success:function(func)
+                {
                     let result = jQuery.parseJSON(func);
                     if (result) {
                         alert("Author added successfully");
@@ -102,22 +103,40 @@
             })
         });
 
-        $("#btnDeleteWriter").click(function () {
-            let id = $("#txtId").val();
+        $("#btnDeleteWriter").click(function(){
+
+            let id3 = $("#txtId").val();
+            $.ajax({
+                type:"POST",
+                dataType: "json",
+                url: "/Admin/Writer/DeleteWriter/",
+                data: { writerId: id3 },
+                success:function(func){
+                     alert("Author was deleted")           
+                }
+
+            })
+        });
+        $("#btnUpdateWriter").click(function(){
+
+            let writer = {
+                WriterId: $("#txtId").val(),
+                WriterName: $("#writerName").val(),
+                About: $("#writerAbout").val(),
+                Image: $("#writerImage").val(),
+                Mail: $("#writerMail").val(),
+                Password: $("#writerMail").val(),
+            }
             $.ajax({
                 type: "POST",
-                url: "/Admin/Writer/DeleteWriter/",
-                data: { writerId: id },
+                dataType: "json",
+                url: "/Admin/Writer/UpdateWriter/",
+                data: writer,
                 success: function (func) {
-                    let result = jQuery.parseJSON(func);
-                    if (result) {
-                        alert("Author deleted successfully");
-                    }
-                    else {
-                        alert("Author could not be deleted");
-                    }
+                    alert("Author was updated")
                 }
             })
         })
     </script>
 }
+ 
