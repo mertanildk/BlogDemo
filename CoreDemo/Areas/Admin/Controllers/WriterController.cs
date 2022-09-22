@@ -23,5 +23,12 @@ namespace MvcUI.Areas.Admin.Controllers
             var jsonBlogs = JsonConvert.SerializeObject(_writerService.GetAll());
             return Json(jsonBlogs);
         }
+        
+        public IActionResult GetWriterById(int writerId)
+        {
+            var jsonBlogs = JsonConvert.SerializeObject(_writerService.GetById(writerId));
+            return Json(jsonBlogs);
+        }
+
     }
 }
