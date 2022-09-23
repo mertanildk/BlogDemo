@@ -38,6 +38,7 @@ namespace MvcUI.Areas.Admin.Controllers
             var jsonWriter = JsonConvert.SerializeObject(writer);
             return Json(jsonWriter);
         }
+        
         public IActionResult DeleteWriter(int writerId)
         {
             var writerToDelete = _writerService.GetById(writerId);
