@@ -25,6 +25,7 @@ namespace DataAccess.Concrete.EntityFramework
                 .WithMany(y => y.WriterReceiver)
                 .HasForeignKey(z => z.ReceiverId)
                 .OnDelete(DeleteBehavior.ClientSetNull);
+            base.OnModelCreating(modelBuilder);
         }
         
         
