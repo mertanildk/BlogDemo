@@ -1,0 +1,12 @@
+﻿@model Entity.Concrete.Writer
+@{
+    ViewBag.Title = "Add Writer";
+    Layout = "AdminLayout";
+}
+
+<form method="post">
+    <label>Writer Name</label>
+    <input type="text" asp-for="@Model.WriterName" class="form-control" />
+    <button>Add</button>
+</form>
+@section scripts { }

@@ -1,0 +1,38 @@
+﻿@model List<Entity.Concrete.Writer>
+@{
+    ViewBag.Title = "Index.cshtml";
+    Layout = "AdminLayout";
+}
+
+<h1>Ajax</h1>
+<br>
+<button type="button" id="btnGetList" class="btn btn-outline-primary">Authors List</button>
+
+<table>
+    <tr>
+        <th>#</th>
+        <th>Author Name</th>
+        <th>Author About</th>
+        <th>Author Image</th>
+        <th>Author Mail</th>
+        <th>Author Status</th>
+        <th>Delete</th>
+        <th>Update</th>
+
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <th>@item.WriterId</th>
+            <th>@item.WriterName</th>
+            <th>@item.About</th>
+            <th>@item.Image</th>
+            <th>@item.Mail</th>
+            <th>@item.Status</th>
+            <th><a href="#" class="btn btn-outline-danger">SİL</a></th>
+            <th><a href="/Writers/EditWriter/@item.WriterId" class="btn btn-outline-success">Düzenle</a></th>
+        </tr>
+    }
+</table>
+<a href="/Writers/AddWriters">New Writer</a>
+@section scripts { }
