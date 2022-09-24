@@ -3,7 +3,7 @@
 <div class="comment-top">
     <h4>Leave a Comment</h4>
     <div class="comment-bottom">
-        <form method="post">
+        <form>
             @*<label  name="BlogId" >@ViewBag.BlogID</label>*@
             <input class="form-control" id="username" type="text" name="UserName" placeholder="UserName" required="">
             <input class="form-control" type="text" id="title" name="Title" placeholder="Title" required="">
@@ -15,23 +15,19 @@
 </div>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <script>
-    $(document).ready(function() {
-        $("#submit").click(function() {
-            var username = $("#username").val();
-            var title = $("#title").val();
-            var content = $("#content").val();
-            var BlogId = @Context.GetRouteData().Values["id"];
-            $.ajax({
-                url: "/Comments/PartialAddComment/",
-                type: "POST",
-                data: { UserName: username, Title: title, Content: content, BlogId: BlogId },
-                success: function() {
-                    window.location.href = "/Blogs/BlogsDetails/" + BlogId;
 
-                }
-            });
-
-        })
+    $("#submit").click(function () {
+        var username = $("#username").val();
+        var title = $("#title").val();
+        var content = $("#content").val();
+        var BlogId = @Context.GetRouteData().Values["id"];
+        
+        $.ajax({
+            url: "/Comments/PartialAddComment/",
+            type: "POST",
+            data: { UserName: username, Title: title, Content: content, BlogId: BlogId }
+        });
 
     });
+
 </script>

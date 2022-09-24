@@ -1,31 +1,34 @@
 ﻿using Business.Abstract;
-using Business.Concrete;
-using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MvcUI.Controllers;
 
+[AllowAnonymous]
 public class NewsLettersController : Controller
 {
-    INewsLetterService _newsLetter;
+    INewsLetterService _newsLetterService;
 
     public NewsLettersController(INewsLetterService newsLetter)
     {
-        _newsLetter = newsLetter;
+        _newsLetterService = newsLetter;
     }
 
     [HttpGet]
     public PartialViewResult SubscribeMail()
     {
-        return PartialView(_newsLetter.GetAll()) ;
+        return PartialView(_newsLetterService.GetAll());
     }
 
     [HttpPost]
-    public PartialViewResult SubscribeMail(NewsLetter newsLetter)
+    public IActionResult SubscribeMail(NewsLetter newsLetter)
     {
         newsLetter.MailStatus = true;
-        _newsLetter.Add(newsLetter);
+        if (!_newsLetterService.GetAll().Contains(newsLetter))
+        {
+            _newsLetterService.Add(newsLetter);
+        }
         return PartialView();
     }
 }

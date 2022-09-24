@@ -1,9 +1,11 @@
 ﻿using Business.Abstract;
 using Entity.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MvcUI.Controllers
 {
+    [AllowAnonymous]
     public class ContactController : Controller
     {
         IContactService _contactService;
