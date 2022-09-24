@@ -2,11 +2,14 @@ using Business.Abstract;
 using Business.Concrete;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
+using Entities.Concrete;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddIdentity<AppUser, AppRole>(x => { x.Password.RequireUppercase = false; }).AddEntityFrameworkStores<CoreBlogContext>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -52,7 +55,9 @@ builder.Services.AddMvcCore();
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
        .AddCookie(x => { x.LoginPath = "/Login/Index"; });
 
+builder.Services.AddDbContext<CoreBlogContext>();
 var app = builder.Build();
+
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
